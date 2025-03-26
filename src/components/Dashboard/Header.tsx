@@ -1,9 +1,17 @@
 import React from "react";
-import { Bell, Settings, User, Search, HelpCircle } from "lucide-react";
+import {
+  Bell,
+  Settings,
+  User,
+  Search,
+  HelpCircle,
+  ShieldCheck,
+} from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Badge } from "../ui/badge";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -24,6 +32,7 @@ const Header = ({
   userAvatar = "",
   notificationCount = 3,
 }: HeaderProps) => {
+  const { userRole } = useAuth();
   return (
     <header className="bg-white border-b border-gray-200 h-20 flex items-center justify-between px-6 w-full">
       <div className="flex items-center w-1/3">
@@ -126,7 +135,19 @@ const Header = ({
                     .join("")}
                 </AvatarFallback>
               </Avatar>
-              <span className="font-medium text-sm">{userName}</span>
+              <div className="flex flex-col items-start">
+                <span className="font-medium text-sm">{userName}</span>
+                {userRole && (
+                  <div className="flex items-center text-xs text-gray-500">
+                    <ShieldCheck className="h-3 w-3 mr-1" />
+                    {userRole === "super_admin"
+                      ? "Super Admin"
+                      : userRole === "admin"
+                        ? "Administrator"
+                        : "User"}
+                  </div>
+                )}
+              </div>
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">

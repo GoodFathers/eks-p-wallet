@@ -24,9 +24,9 @@ const PINValidation = ({
   isOpen = true,
   onClose = () => {},
   onValidate = async () => true,
-  title = "PIN Validation Required",
-  description = "Please enter your PIN to continue with this transaction.",
-  actionText = "Validate",
+  title = "Validasi PIN",
+  description = "Silakan masukkan PIN Anda untuk melanjutkan.",
+  actionText = "Validasi",
 }: PINValidationProps) => {
   const [pin, setPin] = useState<string>("");
   const [isValidating, setIsValidating] = useState<boolean>(false);
@@ -44,7 +44,7 @@ const PINValidation = ({
 
   const handleValidate = async () => {
     if (pin.length < 6) {
-      setError("PIN must be 6 digits");
+      setError("PIN harus terdiri dari 6 digit");
       return;
     }
 
@@ -56,10 +56,10 @@ const PINValidation = ({
       if (isValid) {
         onClose();
       } else {
-        setError("Invalid PIN. Please try again.");
+        setError("PIN tidak valid. Silakan coba lagi.");
       }
     } catch (err) {
-      setError("An error occurred. Please try again.");
+      setError("Terjadi kesalahan. Silakan coba lagi.");
     } finally {
       setIsValidating(false);
     }
@@ -88,7 +88,7 @@ const PINValidation = ({
           <div className="relative">
             <Input
               type={showPin ? "text" : "password"}
-              placeholder="Enter 6-digit PIN"
+              placeholder="Masukkan PIN 6 digit"
               value={pin}
               onChange={handlePinChange}
               onKeyDown={handleKeyDown}
@@ -130,14 +130,14 @@ const PINValidation = ({
             onClick={onClose}
             className="w-full sm:w-auto"
           >
-            Cancel
+            Batal
           </Button>
           <Button
             onClick={handleValidate}
             disabled={isValidating || pin.length < 6}
             className="w-full sm:w-auto"
           >
-            {isValidating ? "Validating..." : actionText}
+            {isValidating ? "Memvalidasi..." : actionText}
           </Button>
         </DialogFooter>
       </DialogContent>

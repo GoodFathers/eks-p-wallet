@@ -42,10 +42,10 @@ const Security = () => {
         <main className="flex-1 overflow-y-auto p-6">
           <div className="mb-6">
             <h1 className="text-2xl font-bold text-gray-800 dark:text-white">
-              Security Settings
+              Pengaturan Keamanan
             </h1>
             <p className="text-gray-600 dark:text-gray-300">
-              Manage your account security and authentication methods
+              Kelola keamanan akun dan metode autentikasi Anda
             </p>
           </div>
 
@@ -55,17 +55,15 @@ const Security = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Key className="h-5 w-5 text-primary" />
-                  PIN Management
+                  Manajemen PIN
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">
-                  Your PIN is used to authorize transactions and access
-                  sensitive information.
+                  PIN Anda digunakan untuk mengotorisasi transaksi dan mengakses
+                  informasi sensitif.
                 </p>
-                <Button onClick={() => setShowPINDialog(true)}>
-                  Change PIN
-                </Button>
+                <Button onClick={() => setShowPINDialog(true)}>Ubah PIN</Button>
               </CardContent>
             </Card>
 
@@ -73,15 +71,15 @@ const Security = () => {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Smartphone className="h-5 w-5 text-primary" />
-                  Two-Factor Authentication
+                  Autentikasi Dua Faktor
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-gray-600 mb-4">
-                  Add an extra layer of security to your account with two-factor
-                  authentication.
+                  Tambahkan lapisan keamanan ekstra ke akun Anda dengan
+                  autentikasi dua faktor.
                 </p>
-                <Button variant="outline">Enable 2FA</Button>
+                <Button variant="outline">Aktifkan 2FA</Button>
               </CardContent>
             </Card>
           </div>
@@ -92,9 +90,9 @@ const Security = () => {
               isOpen={showPINDialog}
               onClose={() => setShowPINDialog(false)}
               onValidate={handlePINValidation}
-              title="Verify Current PIN"
-              description="Please enter your current PIN to continue."
-              actionText="Verify PIN"
+              title="Verifikasi PIN Saat Ini"
+              description="Silakan masukkan PIN Anda saat ini untuk melanjutkan."
+              actionText="Verifikasi PIN"
             />
           )}
         </main>
